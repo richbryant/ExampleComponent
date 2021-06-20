@@ -1,0 +1,23 @@
+﻿@page "/fakeform"
+<h3>FakeForm</h3>
+
+
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname" @bind-value="FirstName" placeholder="John"><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="lname" @bind-value="LastName" placeholder="Smith"><br><br>
+<button @onclick="ClickSubmit">Submit</button>
+
+<p>@responseMessage</p>
+
+@code {
+    string responseMessage;
+
+    string FirstName { get; set; }
+    string LastName { get; set; }
+
+    void ClickSubmit()
+    {
+        if(! String.IsNullOrEmpty(FirstName) && !String.IsNullOrEmpty(LastName)) responseMessage = $"You submitted {FirstName} {LastName}";
+    }
+}
